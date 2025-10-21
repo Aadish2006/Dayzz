@@ -7,7 +7,10 @@ import authRoutes from './routes/auth.js';
 import habitRoutes from './routes/habit.js';
 import diaryRoutes from './routes/diary.js';
 const app = express();
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
+}));
 app.use(express.json({ limit: '5mb' }));
 
 connectDB();
